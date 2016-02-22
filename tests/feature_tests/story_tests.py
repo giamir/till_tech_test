@@ -18,4 +18,4 @@ class TestStories(object):
         self.till.ring_up('Cafe Latte', 2)
         self.till.ring_up('Blueberry Muffin', 1)
         self.till.ring_up('Choc Mudcake', 1)
-        eq_(self.till.preview_order(), janes_order)
+        eq_(self.till.view_order(), janes_order)

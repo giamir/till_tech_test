@@ -2,10 +2,10 @@ class Order(object):
     def __init__(self):
         self._items = {}
 
-    def view(self):
+    def view_order(self):
         return self._items
 
-    def add_item(self, item, quantity):
+    def ring_up(self, item, quantity):
         if item in self._items:
             self._items[item] += quantity
         else:
