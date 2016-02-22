@@ -1,7 +1,5 @@
-Till tech test
-==============
-
-*Instructions*: Please fork this repo and submit a pull request once you've finished. Then prepare for code review!
+Till tech test - Python
+=======================
 
 ![a till](/images/till.jpg)
 
@@ -18,7 +16,7 @@ This is what a sample receipt looks like:
 Version 1
 ---------
 
-Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop. 
+Implement a system that contains the business logic to produce receipts similar to this, based on a `json` price list and test orders. A sample `.json` file has been provided with the list of products sold at this particular coffee shop.
 
 Here are some sample orders you can try - whether you use this information is up to you:
 
@@ -34,15 +32,40 @@ Here are some sample orders you can try - whether you use this information is up
 
 Your receipt must calculate and show the correct amount of tax (in this shop's case, 8.64%), as well as correct line totals and total amount. Do not worry about calculating discounts or change yet. Consider what output formats may be suitable.
 
-Version 2
----------
+##Installation Instructions
 
-- Add functionality to take payment and calculate correct change.  
-- Add functionality to handle discounts - in this example, a 5% discount on orders over $50, and a 10% muffin discount.
+Clone the repository then change directory into it.
 
-Version 3
----------
+```
+$ git clone git@github.com:giamir/till_tech_test.git
+$ cd till_tech_test
+```
 
-Implement an user interface that can actually be used as a till.
+Install and activate VirtualEnv
 
-You may use whatever technologies you see fit.
+```
+$ pip install virtualenv
+$ virtualenv venv
+$ source venv/bin/activate
+```
+
+Install required packages using pip and the requirements.txt file
+
+```
+$ pip install -r requirements.txt
+```
+
+Open the interpreter and import the application files
+
+```python
+$ python
+>>>
+```
+
+Now you can use the till system.
+
+
+##Contributors
+
+* [Giamir Buoncristiani](https://github.com/giamir)
+* [Michael Lennox](https://github.com/michaellennox)
