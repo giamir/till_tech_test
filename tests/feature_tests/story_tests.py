@@ -25,6 +25,7 @@ class TestStories(object):
             'Cafe Latte': '2x $4.75',
             'Blueberry Muffin': '1x $4.05',
             'Choc Mudcake': '1x $6.40',
-            'Tax': '$1.72'
+            'Tax': '$1.72',
+            'Total': '$21.67'
         }
         eq_(self.till.receipt_as_json(), json.dumps(expected_output))
