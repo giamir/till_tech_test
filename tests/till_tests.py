@@ -7,11 +7,12 @@ class TestTill(object):
     def setUp(self):
         self.menu_mock = Mock()
         self.order_mock = Mock()
-        receipt_mock = Mock(receipt_as_json='JSON data')
-        self.receipt_klass_mock = Mock(return_value=receipt_mock)
+        self.receipt_mock = Mock()
+        self.receipt_klass_mock = Mock(return_value=self.receipt_mock)
         self.order_klass_mock = Mock(return_value=self.order_mock)
         self.till = Till(menu=self.menu_mock,
-                         order_klass=self.order_klass_mock)
+                         order_klass=self.order_klass_mock,
+                         receipt_klass=self.receipt_klass_mock)
 
     def test_till_delegates_view_order_to_order(self):
         self.till.view_order()
@@ -26,10 +27,12 @@ class TestTill(object):
         self.menu_mock.verify_in_menu.assert_called_with('Another Item')
 
     def test_receipt_as_json_returns_value_from_receipt(self):
+        self.receipt_mock.receipt_as_json.return_value = 'JSON data'
         eq_(self.till.receipt_as_json(), 'JSON data')
 
     def test_receipt_as_json_initializes_Receipt_with_menu_and_order(self):
         self.menu_mock.view_menu.return_value = 'Faked Menu'
         self.order_mock.view_order.return_value = 'Faked Order'
+
         self.till.receipt_as_json()
         self.receipt_klass_mock.assert_called_with('Faked Order', 'Faked Menu')
