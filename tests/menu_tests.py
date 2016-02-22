@@ -1,6 +1,6 @@
+import json
 from nose.tools import eq_, raises, assert_raises_regexp
 from app.menu import Menu, NotInMenuError
-import json
 
 
 class TestMenu(object):
