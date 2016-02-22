@@ -8,10 +8,20 @@ class Receipt(object):
 
     def receipt_as_json(self):
         receipt = {}
+        for item in self._order:
+            receipt[item] = self._calculate_line(item)
+        receipt['Tax'] = self._calculate_tax()
+        return json.dumps(receipt)
+
+    def _sum_order(self):
         total = 0
         for item in self._order:
-            receipt[item] = "{}x ${:.2f}".format(self._order[item],
-                                                 self._menu[item])
             total += self._order[item] * self._menu[item]
-        receipt['Tax'] = "${:.2f}".format(total * 0.0864, 2)
-        return json.dumps(receipt)
+        return total
+
+    def _calculate_tax(self):
+        tax = self._sum_order() * 0.0864
+        return "${:.2f}".format(tax)
+
+    def _calculate_line(self, item):
+        return "{}x ${:.2f}".format(self._order[item], self._menu[item])
