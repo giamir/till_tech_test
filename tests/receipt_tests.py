@@ -12,6 +12,7 @@ class TestReceipt(object):
     def test_receipt_as_json_returns_a_correct_receipt_as_json(self):
         expected_output = {
             'Mocha': '2x $2.00',
-            'Chai': '3x $1.00'
+            'Chai': '3x $1.00',
+            'Tax': '$0.60'
         }
         eq_(self.receipt.receipt_as_json(), json.dumps(expected_output))
