@@ -1,5 +1,5 @@
 from app.order import Order
-from forwardable import def_delegators
+from forwardable import def_delegator
 
 
 class Till(object):
@@ -8,4 +8,7 @@ class Till(object):
         self._order_klass = order_klass
         self._current_order = self._order_klass()
 
-    def_delegators('_current_order', ('ring_up', 'view_order'))
+    def_delegator('_current_order', 'view_order')
+
+    def ring_up(self, item, quantity):
+        self._current_order.ring_up(item, quantity)
