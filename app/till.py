@@ -1,13 +1,11 @@
-from app.menu import Menu
 from app.order import Order
-from forwardable import forwardable
+from forwardable import def_delegators
 
 
-@forwardable()
 class Till(object):
     def __init__(self, menu, order_klass=Order):
         self._menu = menu
         self._order_klass = order_klass
         self._current_order = self._order_klass()
 
-    def_delegator('_current_order', 'ring_up')
+    def_delegators('_current_order', ('ring_up', 'view_order'))
