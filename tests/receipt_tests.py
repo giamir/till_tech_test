@@ -15,4 +15,4 @@ class TestReceipt(object):
             'Mocha': '2x $2.00',
             'Chai': '3x $1.00'
         }
-        eq_(self.receipt_as_json(), json.dumps(expected_output))
+        eq_(self.receipt.receipt_as_json(), json.dumps(expected_output))
