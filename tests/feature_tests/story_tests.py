@@ -1,10 +1,12 @@
 from nose.tools import eq_
 from app.till import Till
+from app.menu import Menu
 
 
 class TestStories(object):
     def setUp(self):
-        self.till = Till()
+        menu = Menu('data/hipstercoffee.json')
+        self.till = Till(menu=menu)
 
     def test_janes_order(self):
         # Jane wishes to make the following order

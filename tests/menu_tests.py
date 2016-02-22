@@ -1,5 +1,5 @@
-from nose.tools import eq_, raises
-from app.menu import Menu
+from nose.tools import eq_, raises, assert_raises_regexp
+from app.menu import Menu, NotInMenuError
 import json
 
 
@@ -18,3 +18,13 @@ class TestMenu(object):
     @raises(NotInMenuError)
     def test_price_raises_exception_if_item_is_not_in_menu(self):
         self.menu.price('item not in menu')
+
+
+class TestNotInMenuError(object):
+    def raise_error(self):
+        raise NotInMenuError('Mocha Chai')
+
+    def test_when_raised_has_descriptive_string(self):
+        assert_raises_regexp(NotInMenuError,
+                             'Mocha Chai is not in this menu',
+                             self.raise_error)
