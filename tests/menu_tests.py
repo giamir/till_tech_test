@@ -1,4 +1,4 @@
-from nose.tools import eq_
+from nose.tools import eq_, raises
 from app.menu import Menu
 import json
 
@@ -15,5 +15,6 @@ class TestMenu(object):
     def test_price_returns_the_price_of_item_requested(self):
         eq_(self.menu.price('Cafe Latte'), self.price_data['Cafe Latte'])
 
+    @raises(NotInMenuError)
     def test_price_raises_exception_if_item_is_not_in_menu(self):
-        pass
+        self.menu.price('item not in menu')
