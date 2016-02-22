@@ -10,9 +10,12 @@ class Menu(object):
         return self._menu
 
     def price(self, item):
+        self.verify_in_menu(item)
+        return self._menu[item]
+
+    def verify_in_menu(self, item):
         if item not in self._menu:
             raise NotInMenuError(item)
-        return self._menu[item]
 
 
 class NotInMenuError(RuntimeError):

@@ -11,4 +11,5 @@ class Till(object):
     def_delegator('_current_order', 'view_order')
 
     def ring_up(self, item, quantity):
+        self._menu.verify_in_menu(item)
         self._current_order.ring_up(item, quantity)

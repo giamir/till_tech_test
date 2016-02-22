@@ -19,6 +19,10 @@ class TestMenu(object):
     def test_price_raises_exception_if_item_is_not_in_menu(self):
         self.menu.price('item not in menu')
 
+    @raises(NotInMenuError)
+    def test_verify_in_menu_raises_NotInMenuError_if_item_is_not_in_menu(self):
+        self.menu.verify_in_menu('item not in menu')
+
 
 class TestNotInMenuError(object):
     def raise_error(self):
