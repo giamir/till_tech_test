@@ -8,3 +8,6 @@ class Menu(object):
 
     def view_menu(self):
         return self._menu
+
+    def price(self, item):
+        return self._menu[item]
